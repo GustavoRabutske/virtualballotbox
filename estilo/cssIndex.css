@@ -1,0 +1,335 @@
+body {
+    font-family: "Neue Montreal";
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 4px solid red; /* Borda vermelha na parte superior */
+    border-bottom: 4px solid blue; /* Borda azul na parte inferior */
+    text-align: left;
+}
+
+.logo-container {
+    margin-right: 10px;
+}
+
+.logo {
+    max-width: 50px; /* Tamanho máximo original do ícone */
+    width: 100%; /* Para ocupar a largura total do contêiner */
+}
+
+.title {
+    flex-grow: 1; /* Ocupa o espaço restante disponível */
+    font-size: 1.5em;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #333; /* Cor do texto */
+    padding: 8px 12px;
+    margin-right: 10px; /* Espaçamento entre os links */
+    border: 2px solid #333; /* Cor da borda */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buttons a:hover {
+    background-color: #555;
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+footer a{
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+}
+
+button {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 12px;
+    width: 133px;
+}
+
+button:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+    text-decoration: none;
+}
+
+button:active {
+    color: #ff9900;
+    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
+}
+
+.modalIndex {
+    right: -150px; /* Ajuste conforme necessário para definir a distância do lado direito */
+    top: 50%; /* Centraliza verticalmente */
+    width: 500px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #add8e6;
+    /* Cor de fundo azul fraquinho */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 10px;
+    /* Valor ajustável para definir o quanto você quer arredondar as bordas */
+    border: 2px solid #4682b4;
+    /* Cor da borda azul mais escuro */
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    border: none; /* Remova a borda padrão */
+    border-top: 1px solid #808080; /* Cor cinza (#808080) para a linha superior */
+    margin-top: 20px; /* Espaçamento do topo, ajuste conforme necessário */
+  }
+
+/* Estilo para a classe info */
+.info {
+    width: 150px;
+    border: 2px solid black;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin: 200px;
+    margin-top: 175px;
+  
+    /* Estilo para os botões dentro da classe info */
+    button {
+      display: block;
+      width: 133px; /* Largura específica para os botões */
+      margin-bottom: 10px;
+      margin: 5px;
+    }
+
+    h3 {
+        text-align: center;
+        margin: 5px;
+    }
+  }
+
+/* Estilo para o ID by */
+#by {
+    position: fixed;
+    right: 150px; /* Ajuste conforme necessário para definir a distância do lado direito */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Corrige a posição vertical para o centro */
+  }
+
+  footer {
+    position: fixed; /* Posicionamento fixo para o rodapé */
+    left: 0; /* Alinha o rodapé à esquerda */
+    bottom: 0; /* Alinha o rodapé na parte inferior da janela do navegador */
+    width: 100%; /* Largura total */
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #808080;
+    box-sizing: border-box;
+}
+
+/* Estilo para os links no rodapé */
+.linkFooter, .termos {
+    text-decoration: none;
+    color: #333; /* Cor padrão do texto */
+    transition: color 0.3s ease; /* Transição suave na mudança de cor */
+    font-weight: bold; /* Texto em negrito */
+}
+
+.termos{
+    text-decoration: underline;
+}
+
+/* Estilo ao passar o mouse sobre os links */
+.linkFooter:hover, .termos:hover {
+    color: #007bff; /* Cor ao passar o mouse (azul claro) */
+}
+
+
+.termos:hover {
+    color: #007bff; /* Cor ao passar o mouse (azul claro) */
+    text-decoration: none;
+}
+
+/* Estilo ao clicar nos links */
+.linkFooter:active, .termos:active {
+    color: #0056b3; /* Cor ao clicar no link (azul mais escuro) */
+}
+
+/* Estilo específico para os links à esquerda (redes sociais) */
+.linkFooter.left {
+    margin-right: auto; /* Coloca os links à esquerda */
+}
+
+/* Estilo específico para os links no centro (termos) */
+.termos.center {
+    flex-grow: 2; /* Faz com que os links ocupem mais espaço no centro */
+    opacity: 0.7; /* Opacidade menor para tornar mais discreto */
+    text-align: center; /* Centraliza o texto no centro */
+    justify-content: space-around; /* Distribui os termos lado a lado */
+}
+
+/* Estilo específico para os links à direita (versão) */
+.linkFooter.right {
+    margin-left: auto; /* Coloca os links à direita */
+}
+
+/* Estilo para o parágrafo dentro do rodapé */
+footer p {
+    margin: 0; /* Remove as margens padrão do parágrafo */
+    text-align: right; /* Alinha o parágrafo à direita */
+}
+
+  
+.textInfo{
+   font-size: 22px;
+}
+
+#btnVersao {
+    float: right;
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 10px; /* Ajuste conforme necessário */
+}
+
+#btnVersao:hover{
+    text-decoration: none;
+    color: #255b6d;
+}
+
+.modalVersao {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+
+/* Base para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    body {
+        text-align: center; /* Centraliza o conteúdo */
+    }
+
+ .title {
+        font-size: 1.2em; /* Reduz o tamanho da fonte do título */
+    }
+
+    hr {
+        margin-top: 10px; /* Reduz o espaçamento superior da linha horizontal */
+    }
+
+    header {
+        flex-direction: column; /* Empilha os elementos verticalmente */
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: column; /* Empilha os botões verticalmente */
+        margin-top: 10px; /* Adiciona espaço entre os botões */
+    }
+
+    .buttons a {
+        margin: 5px 0; /* Adiciona espaço entre os botões */
+    }
+
+    footer {
+        flex-direction: column; /* Empilha os elementos do rodapé verticalmente */
+        position: relative;
+    }
+
+    #by {
+        right: auto; /* Remove a posição fixa à direita */
+        left: 10px; /* Adiciona margem à esquerda */
+        position: relative;
+    }
+
+    .modalIndex {
+        width: 80%; /* Ajusta a largura do modal para a tela do dispositivo */
+        left: 50%; /* Centraliza horizontalmente */
+        top: 50%; /* Centraliza verticalmente */
+        transform: translate(-50%, -50%); /* Corrige a posição horizontal e vertical */
+    }
+
+    .linkFooter.right{
+        text-align: center;
+        padding: 3px;
+    }
+    
+
+    section {
+        margin-top: 20px; /* Adiciona espaço entre as seções */
+    }
+
+    .info {
+        margin: 20px; /* Aumenta a margem para melhor espaçamento */
+        width: 80%;
+
+         /* Estilo para os botões dentro da classe info */
+    button {
+        display: block;
+        width: 100%; /* Largura específica para os botões */
+        margin-bottom: 10px;
+        margin: 5px;
+      }
+
+    }
+
+}

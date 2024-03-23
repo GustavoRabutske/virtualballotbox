@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/cssGlobal.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>VirtualBallotBox - Global</title>
+    <link rel="icon" href="logo/GR.png" type="image/x-icon">
+        <style>
+          #mobile-warning {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  #mobile-warning {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8d7da; 
+    color: #721c24;
+    padding: 10px;
+    text-align: center;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo/logo.png" alt="Ícone" class="logo">
+        </div>
+        <div class="title">VirtualBallotBox</div>
+        <div class="buttons">
+            <a href="https://gustavorabutske.com.br/virtualballotbox/index.html">Início</a>
+            <a href="https://gustavorabutske.com.br/virtualballotbox/brasil.html">Simulação do Brasil</a>
+            <a href="https://gustavorabutske.com.br/virtualballotbox/projetoAmerica.html">Simulação americana</a>
+        </div>
+    </header>
+    
+    <div id="mobile-warning">
+        <p>Estamos trabalhando na versão para celular. Recomendamos usar a versão para PC por enquanto.</p>
+      </div>
+          <noscript>Para utilizar esta página, habilite os scripts em seu navegador.</noscript>
+
+    <hr>
+
+    <div id="app">
+        <details>
+            <summary>Configurar eleição</summary>
+            <!-- guia de ajuda -->
+            <details>
+                <summary>Ajuda</summary>
+                <p style="font-size: 18px;">
+                    Comece adicionando uma imagem do candidato: clique em "escolher arquivo" e selecione a imagem desejada, preferencialmente com as dimensões 150 x 120 para garantir uma apresentação visual otimizada. Em seguida, insira o nome do candidato, escolha uma cor de campanha e, por fim, defina o total de votos para a simulação.
+                    <br><br>
+                    Evite utilizar nomes e/ou imagens muito grandes, pois isso pode causar distorções no layout e comprometer a qualidade visual da apresentação. </p>
+            </details>
+            <p style="color: red;text-align:center;font-weight: 400px">Recomenda-se imagens 150 x 120 </p>
+            <div class="container">
+                <!-- candidato 1-->
+                <div class="candidate-box">
+                    <label for="uploadImagem">Faça o upload da imagem:</label>
+                    <input type="file" id="uploadImagem"
+                        onchange="exibirImagem('imagemPreview', 'uploadImagem', 'imagensContainer1', 'nomeCandidato1')">
+                    <br><br><br>
+                    <div id="imagemContainer" class="imagem-container">
+                        <img id="imagemPreview" src="logo/imagemPadrao.png" alt="Imagem do candidato">
+                    </div>
+                    <br><br>
+                    <label>Nome do candidato(a):</label>
+                    <input class="nomeCandidato1" type="text" oninput="mostrarCandidato1()" maxlength="17">
+                    <label for="corCampanha1">Cor de campanha:</label>
+                    <select id="corCampanha1">
+                        <option value="padrao">Padrão</option>
+                        <option value="azul">Azul</option>
+                        <option value="vermelho">Vermelho</option>
+                        <option value="laranja">Laranja</option>
+                        <option value="amarelo">Amarelo</option>
+                        <option value="verde">Verde</option>
+                    </select>
+                </div>
+
+                <!-- candidato 2 -->
+                <div class="candidate-box">
+                    <label for="uploadImagem">Faça o upload da imagem:</label>
+                    <input type="file" id="uploadImagem2"
+                        onchange="exibirImagem('imagemPreview2', 'uploadImagem2', 'imagensContainer2', 'nomeCandidato2')">
+                    <br><br><br>
+                    <div id="imagemContainer2" class="imagem-container">
+                        <img id="imagemPreview2" src="logo/imagemPadrao.png" alt="Imagem do candidato">
+                    </div>
+                    <br><br>
+                    <label>Nome do candidato(a):</label>
+                    <input class="nomeCandidato2" type="text" oninput="mostrarCandidato2()" maxlength="17">
+                    <label for="corCampanha2">Cor de campanha:</label>
+                    <select id="corCampanha2">
+                        <option value="padrao">Padrão</option>
+                        <option value="azul">Azul</option>
+                        <option value="vermelho">Vermelho</option>
+                        <option value="laranja">Laranja</option>
+                        <option value="amarelo">Amarelo</option>
+                        <option value="verde">Verde</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="votes-box" style="text-align: center;">
+                <label for="totalVotes">Total de Votos:</label>
+                <input type="number" id="totalVotes" v-model="totalVotes" />
+            </div>
+
+        </details>
+
+        <h2>Candidatos</h2>
+        <hr>
+        <div class="container">
+
+            <!-- candidato 1 -->
+            <div class="candidate-box2">
+                <div class="imagem-container">
+                    <div id="imagensContainer1"></div>
+                </div>
+                <div class="candidato1">
+                    <br>
+                    <label id="nomeCandidato1" class="nomeCandidato1"></label>
+                    <input type="range" step="0.1"  id="rangeCandidato1" v-model="porcentagemCandidato1"
+                        :max="100 - porcentagemCandidato2 - porcentagemCandidato3">
+                    <p>Porcentagem: {{ porcentagemCandidato1 }}%</p>
+                    <p>Votos: {{ votosCandidato1 }}</p>
+
+                </div>
+
+            </div>
+
+            <!-- candidato 2-->
+            <div class="candidate-box2">
+                <div class="imagem-container">
+                    <div id="imagensContainer2"></div>
+                </div>
+                <div class="candidato2">
+                    <br>
+                    <label id="nomeCandidato2" class="nomeCandidato2"></label>
+                    <input type="range" id="rangeCandidato2" step="0.1" v-model="porcentagemCandidato2"
+                        :max="100 - porcentagemCandidato1 - porcentagemCandidato3">
+                    <p>Porcentagem: {{ porcentagemCandidato2 }}%</p>
+                    <p>Votos: {{ votosCandidato2 }}</p>
+
+                </div>
+
+            </div>
+
+            <!-- outros -->
+            <div class="candidate-box2">
+                <div class="imagem-container">
+                    <img src="logo/logo.png" alt="Imagem do candidato">
+                </div>
+                <div class="candidato3">
+                    <br>
+                    <label>Outros</label>
+                    <input type="range" step="0.1" v-model="porcentagemCandidato3"
+                        :max="100 - porcentagemCandidato1 - porcentagemCandidato2">
+                    <p>Porcentagem: {{ porcentagemCandidato3 }}%</p>
+                    <p>Votos: {{ votosCandidato3 }}</p>
+
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="result-section">
+            <p>Total de Votos: {{ totalVotes }}</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <a class="linkFooter left" href="https://gustavorabutske.com.br" target="_blank">Portfólio&nbsp;</a>
+        <a class="linkFooter left" href="https://github.com/GustavoRabutske" target="_blank">&nbsp;| GitHub</a>
+        <div class="termos center">
+            <a class="termos center" href="https://gustavorabutske.com.br/virtualballotbox/termos-uso.html">Termos de uso</a>
+            <a style="margin: 15px;" class="termos center" href="https://gustavorabutske.com.br/virtualballotbox/privacidade.html">Política de privacidade</a>
+        </div>
+        <p class="linkFooter right">Versão 1.7</p>
+    </footer>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        totalVotes: 0,
+        porcentagemCandidato1: 0,
+        porcentagemCandidato2: 0,
+        porcentagemCandidato3: 0,
+    },
+    computed: {
+        votosCandidato1() {
+            return Math.round((this.porcentagemCandidato1 / 100) * this.totalVotes);
+        },
+        votosCandidato2() {
+            return Math.round((this.porcentagemCandidato2 / 100) * this.totalVotes);
+        },
+        votosCandidato3() {
+            return Math.round((this.porcentagemCandidato3 / 100) * this.totalVotes);
+        },
+    },
+});
+
+// Exibir os nomes dos candidatos 1 e 2
+function mostrarCandidato1() {
+    // Captura o valor do input
+    var nomeDigitado = document.querySelector('.nomeCandidato1').value;
+
+    // Seleciona todos os elementos com a classe 'nomePessoa'
+    var elementosNome = document.querySelectorAll('.nomeCandidato1');
+
+    // Atualiza o conteúdo de cada elemento com o valor do input
+    elementosNome.forEach(function (elemento) {
+      elemento.textContent = nomeDigitado;
+    });
+  }
+
+  function mostrarCandidato2() {
+    // Captura o valor do input
+    var nomeDigitado = document.querySelector('.nomeCandidato2').value;
+
+    // Seleciona todos os elementos com a classe 'nomePessoa'
+    var elementosNome = document.querySelectorAll('.nomeCandidato2');
+
+    // Atualiza o conteúdo de cada elemento com o valor do input
+    elementosNome.forEach(function (elemento) {
+      elemento.textContent = nomeDigitado;
+    });
+  }
+
+function exibirImagem(imagemId, inputId, containerId, nomeClass) {
+    const fileInput = document.getElementById(inputId);
+    const imagePreview = document.getElementById(imagemId);
+    const imagensContainer = document.getElementById(containerId);
+
+    // Verificar se é uma imagem
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const file = fileInput.files[0];
+
+    if (file && allowedTypes.includes(file.type)) {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            imagePreview.src = e.target.result;
+            displayUploadedImages(e.target.result, imagensContainer, nomeClass);
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        alert("Por favor, selecione um arquivo de imagem válido (JPEG, PNG, GIF).");
+        fileInput.value = ''; // Limpar o campo de arquivo para evitar a substituição do arquivo inválido
+    }
+}
+
+function displayUploadedImages(imageSrc, container, nomeClass) {
+    // Limpar o conteúdo anterior antes de adicionar uma nova imagem
+    container.innerHTML = '';
+
+    const imageElement = document.createElement('img');
+    imageElement.src = imageSrc;
+    imageElement.classList.add('candidato-imagem');
+    container.appendChild(imageElement);
+
+    const nomeElement = document.querySelector(`.${nomeClass}`);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setupCampanha('corCampanha2', 'nomeCandidato2', 'rangeCandidato2');
+    setupCampanha('corCampanha1', 'nomeCandidato1', 'rangeCandidato1');
+});
+
+function setupCampanha(corCampanhaId, nomeCandidatoId, rangeInputId) {
+    var corCampanhaSelect = document.getElementById(corCampanhaId);
+    var nomeCandidatoLabel = document.getElementById(nomeCandidatoId);
+    var rangeInput = document.getElementById(rangeInputId);
+
+    corCampanhaSelect.addEventListener('change', function() {
+        var selectedColor = this.value;
+        aplicarEstilos(nomeCandidatoLabel, rangeInput, selectedColor);
+    });
+}
+
+function aplicarEstilos(nomeCandidatoLabel, rangeInput, cor) {
+    var cores = {
+        'azul': '#3498db',
+        'vermelho': '#e74c3c',
+        'laranja': '#e67e22',
+        'amarelo': '#f1c40f',
+        'verde': '#2ecc71'
+    };
+
+    if (cor in cores) {
+        nomeCandidatoLabel.style.color = cores[cor];
+        rangeInput.style.background = cores[cor];
+    } else {
+        // Padrão: Não aplicar estilos adicionais
+        nomeCandidatoLabel.style.color = '';
+        rangeInput.style.background = '';
+    }
+}
+
+</script>
+
+</body>
+</html>

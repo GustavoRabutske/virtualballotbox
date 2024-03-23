@@ -1,0 +1,490 @@
+/* Compreendo que o código CSS atual possa parecer um pouco desorganizado e conter algumas inconsistências, mas está operacional. Decidi não fazer mais alterações nele. Agradeço pela compreensão. */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Neue Montreal";
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #3498db 0%, #c0392b 100%); 
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 4px solid red; /* Borda vermelha na parte superior */
+    border-bottom: 4px solid blue; /* Borda azul na parte inferior */
+    text-align: left;
+}
+/*estilo da logo */
+.logo-container {
+    margin-right: 10px;
+}
+
+.logo {
+    max-width: 50px; /* Tamanho máximo original do ícone */
+    width: 100%; /* Para ocupar a largura total do contêiner */
+}
+
+button {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+    text-decoration: none;
+}
+
+button:active {
+    color: #ff9900;
+    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
+}
+
+h1, h2, h3, .result-section, p, .option {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/*mapa*/
+svg{
+    width: 100%;
+}
+
+path {
+    fill: rgb(201, 192, 155);
+    stroke: white;
+    stroke-width: 1px;
+    transform: scale(1.2) translateY(-390px); /* Mover para cima */
+  }
+
+path:hover {
+    fill: white;
+    stroke: #000;
+    stroke-width: 3px;
+    transition: fill 0.4s;
+    cursor: pointer;
+  }
+
+  /*** PATH DO ALASKA E HAVAII ***/
+  #US-AK {
+    transform: translateY(350px) translateX(640px) scale(0.35); /* Mover para baixo ao lado esquerdo */
+    position: absolute;
+}
+    #US-HI{
+    transform: translateX(640px) translateY(-350px); /* Mover para baixo ao lado esquerdo */
+    position: absolute;
+   }
+
+  .title {
+    flex-grow: 1; /* Ocupa o espaço restante disponível */
+    font-size: 1.5em;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+
+.configAndHelp{
+    text-align: center;
+    left: 50%;
+}
+
+.configAndHelp button {
+    text-decoration: none;
+    color: #333; /* Cor do texto */
+    padding: 8px 12px;
+    margin-right: 10px; /* Espaçamento entre os links */
+    border: 2px solid #333; /* Cor da borda */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: white;
+}
+
+.configAndHelp button:hover {
+    background-color: #555;
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #333; /* Cor do texto */
+    padding: 8px 12px;
+    margin-right: 10px; /* Espaçamento entre os links */
+    border: 2px solid #333; /* Cor da borda */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buttons a:hover {
+    background-color: #555;
+    color: white; /* Cor do texto ao passar o mouse */
+}
+
+/*caixas dos candidatos*/
+.candidates-container {
+    margin-bottom: 20px;
+    position: absolute;
+    top: 38%;
+    margin-left: 20px;
+    width: 500px;
+}
+
+.candidate{
+    margin: 8px;
+}
+
+.candidate-info {
+    display: flex;
+    align-items: center;
+}
+
+.candidate-details {
+    display: flex;
+    flex-direction: column;
+    p, h2{
+        color: white;
+    }
+}
+
+
+/* Estilo para os links no rodapé */
+.linkFooter, .termos {
+    text-decoration: none;
+    color: #333; /* Cor padrão do texto */
+    transition: color 0.3s ease; /* Transição suave na mudança de cor */
+    font-weight: bold; /* Texto em negrito */
+}
+
+.termos{
+    text-decoration: underline;
+}
+
+/* Estilo ao passar o mouse sobre os links */
+.linkFooter:hover, .termos:hover {
+    color: #007bff; /* Cor ao passar o mouse (azul claro) */
+}
+
+
+.termos:hover {
+    color: #007bff; /* Cor ao passar o mouse (azul claro) */
+    text-decoration: none;
+}
+
+/* Estilo ao clicar nos links */
+.linkFooter:active, .termos:active {
+    color: #0056b3; /* Cor ao clicar no link (azul mais escuro) */
+}
+
+/* Estilo específico para os links à esquerda (redes sociais) */
+.linkFooter.left {
+    margin-right: auto; /* Coloca os links à esquerda */
+}
+
+/* Estilo específico para os links no centro (termos) */
+.termos.center {
+    flex-grow: 2; /* Faz com que os links ocupem mais espaço no centro */
+    opacity: 0.7; /* Opacidade menor para tornar mais discreto */
+    text-align: center; /* Centraliza o texto no centro */
+    justify-content: space-around; /* Distribui os termos lado a lado */
+}
+
+/* Estilo específico para os links à direita (versão) */
+.linkFooter.right {
+    margin-left: auto; /* Coloca os links à direita */
+}
+
+/* Estilo para o parágrafo dentro do rodapé */
+footer p {
+    margin: 0; /* Remove as margens padrão do parágrafo */
+    text-align: right; /* Alinha o parágrafo à direita */
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #808080;
+    box-sizing: border-box;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .hoverable:hover + .tooltip {
+    display: block;
+  }
+
+/* Estilo para a seção de configuração de candidatos */
+.configCandidatos {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    height: auto;
+    border-radius: 10px;
+  }
+
+.divHelp {
+    display: none;
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    height: auto;
+    border-radius: 10px;
+    max-height: 80%; /* Define a altura máxima da divHelp */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+}
+
+
+
+  .configCandidatos button {
+    text-decoration: none;
+    color: white; /* Cor do texto */
+    padding: 8px 12px;
+    margin-right: 10px; /* Espaçamento entre os links */
+    border: 2px solid #333; /* Cor da borda */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #4CAF50;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.configCandidatos button:hover {
+    background-color: #555;
+    color: white; /* Cor do texto ao passar o mouse */
+}
+  
+  /* Estilo para a mensagem de recomendação de imagens */
+  .configCandidatos p {
+    color: red;
+  }
+  
+  .candidate-box {
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra leve */
+    text-align: center;
+    position: relative; /* Adiciona posicionamento relativo */
+ }
+
+ .imagem-container img {
+  margin-top: 10px;
+  width: 120px; /* Tamanho fixo */
+  height: 150px; /* Tamanho fixo */
+  object-fit: cover;
+  border-radius: 10px; /* Reduz o arredondamento */
+}
+
+.imagem-container2 img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%; 
+  }
+  
+  /* Estilo para os rótulos de cada candidato */
+  .configCandidatos label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para a entrada de arquivo (upload de imagem) */
+  .configCandidatos input[type="file"] {
+    margin-top: 5px;
+  }
+  
+  /* Estilo para a entrada de texto (nome do candidato) */
+  .configCandidatos input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  /* Estilo para a seleção de cor da campanha */
+  .configCandidatos select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+
+  /*******modal*********/
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid #333; /* Adicionando uma borda */
+    width: 550px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+}
+
+.estado-imagem {
+    width: 75px; /* Ajuste o tamanho conforme necessário */
+    height: 50px; /* Ajuste o tamanho conforme necessário */
+    margin-right: 10px; /* Ajuste o espaçamento conforme necessário */
+}
+
+.range1 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: gray;
+}
+
+.range2 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: gray;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.range3 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: gray;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background-color: white;
+    border: 1px solid #000; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+  
+.container {
+    position: absolute;
+    left: 90%;
+    top: 60%;
+}
+
+#btnVersao {
+    float: right;
+    background: none;
+    border: none;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 10px; /* Ajuste conforme necessário */
+}
+
+#btnVersao:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.modalVersao {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+  
+
+
+  
+  
+
